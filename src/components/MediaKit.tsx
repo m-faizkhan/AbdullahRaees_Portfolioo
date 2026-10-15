@@ -92,27 +92,6 @@ export function MediaKit() {
             </Reveal>
           </div>
         </div>
-
-        {/* Campaign visuals */}
-        <Reveal delay={80}>
-          <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {images.content.map((srcs, i) => (
-              <a
-                key={i}
-                href={links.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View campaign content on Instagram"
-                className="frame group relative aspect-square rounded-2xl"
-              >
-                <Photo sources={srcs} alt={`Campaign visual ${i + 1}`} className="h-full w-full" placeholderLabel="Campaign visual" />
-                <span className="absolute bottom-3 left-3 rounded-full border border-white/10 bg-navy-950/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-steel-200 opacity-0 backdrop-blur-sm transition-opacity duration-500 group-hover:opacity-100">
-                  Campaign visual
-                </span>
-              </a>
-            ))}
-          </div>
-        </Reveal>
       </div>
     </section>
   );

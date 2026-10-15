@@ -3,9 +3,7 @@ import { Photo } from "./ui/Photo";
 import { Reveal } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
 import { InstagramIcon, YoutubeIcon } from "./ui/BrandIcons";
-import { images, links, profile, projects, youtube } from "@/config/site";
-
-const reels = projects.filter((p) => p.type === "reel");
+import { images, links, profile, youtube } from "@/config/site";
 
 function ProfileCard({
   platform,
@@ -90,63 +88,26 @@ export function SocialMedia() {
             </ProfileCard>
           </Reveal>
 
-          <div className="grid gap-6">
-            {/* Screenshot */}
-            <Reveal delay={100}>
-              <a
-                href={links.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="frame group block aspect-video"
-                aria-label="Open Instagram profile"
-              >
-                <Photo
-                  sources={images.instagramScreenshot}
-                  alt="Instagram profile overview — @abdullahraeesoffical"
-                  className="h-full w-full"
-                  placeholderLabel="Instagram profile"
-                />
-                <span className="absolute bottom-4 left-4 rounded-full border border-white/10 bg-navy-950/70 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-steel-200 backdrop-blur-sm">
-                  Profile overview
-                </span>
-              </a>
-            </Reveal>
-
-            {/* Content previews */}
-            <Reveal delay={180}>
-              <div className="grid grid-cols-3 gap-3 sm:grid-cols-5">
-                {reels.map((reel, i) => (
-                  <a
-                    key={reel.id}
-                    href={reel.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Open ${reel.title} on Instagram`}
-                    className="frame group relative aspect-[4/5] rounded-2xl"
-                  >
-                    <Photo sources={reel.thumbnail ?? []} alt={reel.title} className="h-full w-full" placeholderLabel={`Reel 0${i + 1}`} />
-                    <span className="absolute inset-0 flex items-center justify-center">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-navy-950/60 text-ink transition-transform duration-500 group-hover:scale-110">
-                        <Play className="ml-0.5 h-4 w-4" strokeWidth={1.5} fill="currentColor" />
-                      </span>
-                    </span>
-                  </a>
-                ))}
-                {images.content.slice(0, 2).map((srcs, i) => (
-                  <a
-                    key={i}
-                    href={links.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open Instagram profile"
-                    className="frame group relative hidden aspect-[4/5] rounded-2xl sm:block"
-                  >
-                    <Photo sources={srcs} alt={`Content preview ${i + 1}`} className="h-full w-full" placeholderLabel="Content" />
-                  </a>
-                ))}
-              </div>
-            </Reveal>
-          </div>
+          {/* Profile Overview Screenshot */}
+          <Reveal delay={100}>
+            <a
+              href={links.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="frame group block h-full min-h-[360px]"
+              aria-label="Open Instagram profile"
+            >
+              <Photo
+                sources={images.instagramScreenshot}
+                alt="Instagram profile overview — @abdullahraeesoffical"
+                className="h-full w-full object-cover"
+                placeholderLabel="Instagram profile"
+              />
+              <span className="absolute bottom-4 left-4 rounded-full border border-white/10 bg-navy-950/70 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-steel-200 backdrop-blur-sm">
+                Profile overview
+              </span>
+            </a>
+          </Reveal>
         </div>
 
         {/* ───────── YouTube ───────── */}
